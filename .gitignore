@@ -1,0 +1,9 @@
+build/
+out/
+*.exe
+*.out
+*.o
+__pycache__/
+.vscode/
+.idea/
+.DS_Store

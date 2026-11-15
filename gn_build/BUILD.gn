@@ -1,0 +1,19 @@
+toolchain("gcc_toolchain") {
+  tool("cxx") {
+    depfile = "{{output}}.d"
+    command = "g++ -MMD -MF $depfile {{defines}} {{include_dirs}} {{cflags}} {{cflags_cc}} -c {{source}} -o {{output}}"
+    depsformat = "gcc"
+    description = "CXX {{output}}"
+    outputs = [ "{{source_out_dir}}/{{target_output_name}}.{{source_name_part}}.o" ]
+  }
+  tool("link") {
+    outfile = "{{target_output_name}}{{output_extension}}"
+    command = "g++ {{ldflags}} -o $outfile {{inputs}} {{libs}}"
+    description = "LINK $outfile"
+    outputs = [ outfile ]
+  }
+  tool("stamp") {
+    command = "touch {{output}}"
+    description = "STAMP {{output}}"
+  }
+}

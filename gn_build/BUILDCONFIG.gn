@@ -1,0 +1,5 @@
+set_default_toolchain("//gn_build:gcc_toolchain")
+
+set_defaults("executable") {
+  configs = []
+}
